@@ -26,44 +26,66 @@ public class Student {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	 @Min(value=3)
-	 @Column
+	private long id;
+	@Min(value = 3, message = "first name must be 3 character")
+	@Column
 	private String FirstName;
-	 @Min(value=3)
-	 @Column
+	@Min(value = 3, message = "first name must be 3 character")
+	@Column
 	private String LastName;
-	 @Column(nullable=false)
-	 @Min(value = 18, message = "Age must be greater than 15")
-	 @Max(value = 25, message = "Age must be smaller than 20")
-	private int DoB;
-	 @Column(nullable = false)
+	@Column
+	@NotBlank
+	@Min(value = 15, message = "Age must be greater than 15")
+	@Max(value = 20, message = "Age must be smaller than 20")
+	LocalDate dateOfBirth;
+	@Column
+	@Pattern(regexp = "^[A-C]")
 	private String Section;
-	 
-	 @Column(nullable = false)
+
+	@Column
 	private String Gender;
-	 @Size(min = 0, max = 100, message = "About Me must be between 0 and 100 characters")
-	 @Column(nullable = false)
+	@Size(min = 0, max = 100, message = "About Me must be between 0 and 100 characters")
+	@Size(min = 34, message = "validation fail")
+	@Column(nullable = false)
 	private int mark1;
-	 
-	 @Column(nullable = false)
+	@Size(min = 0, max = 100, message = "About Me must be between 0 and 100 characters")
+	@Size(min = 34, message = "validation fail")
+	@Column
 	private int mark2;
-	 
-	 @Column(nullable = false)
+	@Size(min = 0, max = 100, message = "About Me must be between 0 and 100 characters")
+	@Size(min = 34, message = "validation fail")
+	@Column
 	private int mark3;
-	 @Column(nullable = false)
-	private int Total;
-	 @Column(nullable = false)
-	private int Avarage;
-	 @Column(nullable = false)
-	private int Result;
-	
-	
-	
-	
-	
-	
-	
+
+	@Column(nullable = false)
+	private int getTotal() {
+
+		return mark1 + mark2 + mark3;
+
+	}
+
+	@Column
+	private int getAvarage() {
+
+		return (mark1 + mark2 + mark3) / 3;
+	}
+
+	@Column(nullable = false)
+	private void getResult() {
+
+		String result;
+		double avg = (mark1 + mark2 + mark3) / 3;
+		if (avg > 35) {
+
+			result = "pass";
+
+		} else {
+
+			result = "fail";
+		}
+
+	}
+
 	
 
 }
