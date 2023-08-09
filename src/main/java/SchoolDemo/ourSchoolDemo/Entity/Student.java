@@ -26,33 +26,6 @@ public class Student {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	/* @Size(max=10,min=5,message="criteria not met")
-    private String name;
-
-    @Size(min=3)
-    private String institute;
-
-    @Max(value=10)
-    private int id;
-
-    private String subject;
-
-    @Past
-    private LocalDate joiningDate;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	*/
-	
-	
 	private int id;
 	 @Min(value=3)
 	 @Column
